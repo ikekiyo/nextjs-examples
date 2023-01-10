@@ -15,3 +15,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Apollo Server
 [http://localhost:3000/api/graphql](http://localhost:3000/api/graphql)
+
+## References
+- [Building a Next.js App with Apollo Client ](https://www.apollographql.com/blog/apollo-client/next-js/building-a-next-js-app-with-slash-graphql/)
