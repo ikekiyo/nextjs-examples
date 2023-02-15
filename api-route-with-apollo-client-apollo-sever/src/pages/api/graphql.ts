@@ -1,38 +1,22 @@
 import { ApolloServer } from "@apollo/server";
 import { startServerAndCreateNextHandler } from "@as-integrations/next";
-import { gql } from "graphql-tag";
+import { makeExecutableSchema } from "@graphql-tools/schema";
+import { applyMiddleware } from "graphql-middleware";
 
-export const typeDefs = `#graphql
-  type Book {
-    title: String
-    author: String
-  }
+import { resolvers } from "~/graphql/resolvers/resolvers";
+import { typeDefs } from "~/graphql/type-defs";
 
-  type Query {
-    books: [Book]
-  }
-`;
-
-const books = [
-  {
-    title: "The Awakening",
-    author: "Kate Chopin",
-  },
-  {
-    title: "City of Glass",
-    author: "Paul Auster",
-  },
-];
-
-const resolvers = {
-  Query: {
-    books: () => books,
-  },
-};
-
-const server = new ApolloServer({
+export const schema = makeExecutableSchema({
   typeDefs,
   resolvers,
 });
 
-export default startServerAndCreateNextHandler(server);
+const server = new ApolloServer({
+  schema: applyMiddleware(schema),
+});
+
+export default startServerAndCreateNextHandler(server, {
+  context: async (ctx) => {
+    return {};
+  },
+});
