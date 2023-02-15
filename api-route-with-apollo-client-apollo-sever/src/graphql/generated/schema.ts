@@ -23,13 +23,27 @@ export type Scalars = {
 
 export type Book = {
   __typename?: "Book";
-  author?: Maybe<Scalars["String"]>;
-  title?: Maybe<Scalars["String"]>;
+  author: Scalars["String"];
+  title: Scalars["String"];
+};
+
+export type CreateBook = {
+  author: Scalars["String"];
+  title: Scalars["String"];
+};
+
+export type Mutation = {
+  __typename?: "Mutation";
+  createBook: Book;
+};
+
+export type MutationCreateBookArgs = {
+  createBook: CreateBook;
 };
 
 export type Query = {
   __typename?: "Query";
-  books?: Maybe<Array<Maybe<Book>>>;
+  books?: Maybe<Array<Book>>;
 };
 
 export type QueryBooksArgs = {
@@ -44,11 +58,7 @@ export type BooksQueryVariables = Exact<{
 
 export type BooksQuery = {
   __typename?: "Query";
-  books?: Array<{
-    __typename?: "Book";
-    title?: string | null;
-    author?: string | null;
-  } | null> | null;
+  books?: Array<{ __typename?: "Book"; title: string; author: string }> | null;
 };
 
 export const BooksDocument = gql`
