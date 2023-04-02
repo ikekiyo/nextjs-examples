@@ -1,0 +1,6 @@
+query Books($offset: Int, $limit: Int) {
+  books(offset: $offset, limit: $limit) {
+    title
+    author
+  }
+}
