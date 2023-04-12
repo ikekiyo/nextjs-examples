@@ -1,0 +1,21 @@
+overwrite: true
+schema: "src/graphql/type-defs.ts"
+documents: "src/**/*.graphql"
+generates:
+  src/graphql/generated/resolvers-types.ts:
+    plugins:
+      - typescript
+      - typescript-resolvers
+    config:
+      useIndexSignature: true
+  src/graphql/generated/schema.ts:
+    documents: "src/**/*.graphql"
+    plugins:
+      - typescript
+      - typescript-operations
+      - "typescript-react-apollo":
+        withHOC: false
+        withComponent: false
+        withHooks: true
+        avoidOptionals: true
+        operationResultSuffix: "Response"
