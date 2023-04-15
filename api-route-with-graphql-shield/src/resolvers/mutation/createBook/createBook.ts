@@ -2,7 +2,7 @@ import { MutationResolvers, Book } from 'graphql/generated/server-types'
 
 export const createBook: MutationResolvers['createBook'] = async (
   _parent,
-  args,
+  _args,
   _context,
   _info
 ) => {
