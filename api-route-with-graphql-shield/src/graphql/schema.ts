@@ -28,7 +28,7 @@ export const typeDefs = gql`
   }
 
   type Mutation {
-    updateUser(updateUser: UpdateUserInput): User!
+    updateUser(updateUser: UpdateUserInput!): User!
     createBook(createBook: CreateBookInput!): Book!
   }
 `
