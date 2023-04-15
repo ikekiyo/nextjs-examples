@@ -5,6 +5,7 @@ import { applyMiddleware } from 'graphql-middleware'
 
 import { resolvers } from 'resolvers/resolvers'
 import { typeDefs } from 'graphql/schema'
+import { permissions } from 'resolvers/permissions'
 
 export const schema = makeExecutableSchema({
   typeDefs,
@@ -12,11 +13,11 @@ export const schema = makeExecutableSchema({
 })
 
 const server = new ApolloServer({
-  schema: applyMiddleware(schema),
+  schema: applyMiddleware(schema, permissions),
 })
 
 export default startServerAndCreateNextHandler(server, {
   context: async (ctx) => {
-    return {}
+    return { user: null }
   },
 })
