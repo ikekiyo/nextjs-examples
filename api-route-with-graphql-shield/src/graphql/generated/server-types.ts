@@ -44,7 +44,7 @@ export type MutationCreateBookArgs = {
 }
 
 export type MutationUpdateUserArgs = {
-  updateUser?: InputMaybe<UpdateUserInput>
+  updateUser: UpdateUserInput
 }
 
 export type Query = {
@@ -229,7 +229,7 @@ export type MutationResolvers<
     ResolversTypes['User'],
     ParentType,
     ContextType,
-    Partial<MutationUpdateUserArgs>
+    RequireFields<MutationUpdateUserArgs, 'updateUser'>
   >
 }>
 

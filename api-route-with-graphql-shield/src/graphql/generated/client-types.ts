@@ -43,7 +43,7 @@ export type MutationCreateBookArgs = {
 }
 
 export type MutationUpdateUserArgs = {
-  updateUser?: InputMaybe<UpdateUserInput>
+  updateUser: UpdateUserInput
 }
 
 export type Query = {
