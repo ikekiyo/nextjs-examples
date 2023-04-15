@@ -1,4 +1,4 @@
-import { gql } from "graphql-tag";
+import { gql } from 'graphql-tag'
 
 export const typeDefs = gql`
   type Book {
@@ -18,4 +18,4 @@ export const typeDefs = gql`
   type Mutation {
     createBook(createBook: CreateBook!): Book!
   }
-`;
+`
