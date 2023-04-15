@@ -6,16 +6,33 @@ export const typeDefs = gql`
     author: String!
   }
 
-  input CreateBook {
+  type User {
+    id: ID!
+    name: String!
+  }
+
+  input UserInput {
+    id: ID!
+  }
+
+  input UpdateUserInput {
+    id: ID!
+    name: String!
+  }
+
+  input CreateBookInput {
     title: String!
     author: String!
   }
 
   type Query {
-    books(offset: Int, limit: Int): [Book!]
+    books(offset: Int, limit: Int): [Book!]!
+    user(userInput: UserInput!): User!
+    users: [User!]!
   }
 
   type Mutation {
-    createBook(createBook: CreateBook!): Book!
+    updateUser(updateUser: UpdateUserInput!): User!
+    createBook(createBook: CreateBookInput!): Book!
   }
 `
