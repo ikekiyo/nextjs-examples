@@ -58,6 +58,10 @@ export type QueryBooksArgs = {
   offset?: InputMaybe<Scalars['Int']>
 }
 
+export type QueryUserArgs = {
+  userInput: UserInput
+}
+
 export type UpdateUserInput = {
   id: Scalars['ID']
   name: Scalars['String']
@@ -67,6 +71,10 @@ export type User = {
   __typename?: 'User'
   id: Scalars['ID']
   name: Scalars['String']
+}
+
+export type UserInput = {
+  id: Scalars['ID']
 }
 
 export type BooksQueryVariables = Exact<{

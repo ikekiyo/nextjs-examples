@@ -59,6 +59,10 @@ export type QueryBooksArgs = {
   offset?: InputMaybe<Scalars['Int']>
 }
 
+export type QueryUserArgs = {
+  userInput: UserInput
+}
+
 export type UpdateUserInput = {
   id: Scalars['ID']
   name: Scalars['String']
@@ -68,6 +72,10 @@ export type User = {
   __typename?: 'User'
   id: Scalars['ID']
   name: Scalars['String']
+}
+
+export type UserInput = {
+  id: Scalars['ID']
 }
 
 export type WithIndex<TObject> = TObject & Record<string, any>
@@ -190,6 +198,7 @@ export type ResolversTypes = ResolversObject<{
   String: ResolverTypeWrapper<Scalars['String']>
   UpdateUserInput: UpdateUserInput
   User: ResolverTypeWrapper<User>
+  UserInput: UserInput
 }>
 
 /** Mapping between all available schema types and the resolvers parents */
@@ -204,6 +213,7 @@ export type ResolversParentTypes = ResolversObject<{
   String: Scalars['String']
   UpdateUserInput: UpdateUserInput
   User: User
+  UserInput: UserInput
 }>
 
 export type BookResolvers<
@@ -243,7 +253,12 @@ export type QueryResolvers<
     ContextType,
     Partial<QueryBooksArgs>
   >
-  user?: Resolver<ResolversTypes['User'], ParentType, ContextType>
+  user?: Resolver<
+    ResolversTypes['User'],
+    ParentType,
+    ContextType,
+    RequireFields<QueryUserArgs, 'userInput'>
+  >
   users?: Resolver<Array<ResolversTypes['User']>, ParentType, ContextType>
 }>
 

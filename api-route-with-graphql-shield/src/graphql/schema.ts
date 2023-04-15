@@ -11,6 +11,10 @@ export const typeDefs = gql`
     name: String!
   }
 
+  input UserInput {
+    id: ID!
+  }
+
   input UpdateUserInput {
     id: ID!
     name: String!
@@ -23,7 +27,7 @@ export const typeDefs = gql`
 
   type Query {
     books(offset: Int, limit: Int): [Book!]!
-    user: User!
+    user(userInput: UserInput!): User!
     users: [User!]!
   }
 
